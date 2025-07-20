@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Kache | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+ <!-- Include Alpine.js in <head> or just before </body> -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<nav x-data="{ open: false }" class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+    
+    <!-- Logo -->
+    <h1 class="text-2xl font-bold text-blue-600">Portfolio</h1>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-8 text-lg">
+      <li><a href="#home" class="hover:text-blue-500 transition">Home</a></li>
+      <li><a href="#about" class="hover:text-blue-500 transition">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-500 transition">Projects</a></li>
+      <li><a href="#contact" class="hover:text-blue-500 transition">Contact</a></li>
+    </ul>
+
+    <!-- Hamburger Button (mobile) -->
+    <button @click="open = !open" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path x-show="!open" d="M4 6h16M4 12h16M4 18h16" />
+        <path x-show="open" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-show="open" @click.away="open = false" class="md:hidden px-4 pb-4 bg-white shadow-md">
+    <ul class="flex flex-col space-y-4 text-lg">
+      <li><a href="#home" class="block hover:text-blue-500">Home</a></li>
+      <li><a href="#about" class="block hover:text-blue-500">About</a></li>
+      <li><a href="#projects" class="block hover:text-blue-500">Projects</a></li>
+      <li><a href="#contact" class="block hover:text-blue-500">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <!-- Home Section -->
+ <section id="home" class="pt-32 pb-20 text-center bg-gradient-to-br from-blue-600 to-blue-400 text-white">
+  <img src="it.jpeg" alt="John Kache" class="mx-auto rounded-full shadow-lg mb-6 w-32 h-32 object-cover border-4 border-white animate-fade-in" />
+  
+  <h2 class="text-5xl md:text-7xl font-extrabold mb-4 animate-fade-in">Hello, I'm John Kache</h2>
+  
+  <p class="text-2xl mt-2 font-medium animate-fade-in">
+    Computer Science<span class="mx-2">|</span> Web & App Developer
+  </p>
+
+  <!-- Social Icons -->
+  <div class="mt-6 flex justify-center space-x-6">
+    <a href="https://github.com/" target="_blank" class="text-white hover:text-gray-200 text-2xl"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/" target="_blank" class="text-white hover:text-gray-200 text-2xl"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:johnkache72@gmail.com" class="text-white hover:text-gray-200 text-2xl"><i class="fas fa-envelope"></i></a>
+  </div>
+
+  <!-- Download CV Button -->
+  <div class="mt-8">
+    <a href="cv.pdf" download class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition duration-300">
+      Download my CV
+    </a>
+  </div>
+</section>
+
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6 md:px-24 bg-white">
+  <h2 class="text-4xl font-bold mb-12 text-center text-blue-600"><u>About Me</u></h2>
+  <div class="flex flex-col md:flex-row items-center md:items-start max-w-6xl mx-auto space-y-10 md:space-y-0 md:space-x-12">
+    
+    <!-- Reduced Image Size -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img src="pr3.jpeg" alt="About Me Photo" 
+     class="max-w-xs md:max-w-sm max-h-72 rounded-2xl shadow-md w-full object-cover" />
+
+    </div>
+    
+    <!-- Text -->
+    <div class="w-full md:w-1/2">
+      <p class="text-xl leading-8 text-gray-700">
+        I'm a passionate developer with experience in building web and mobile applications. I love creating user-friendly, accessible, and scalable digital products. My focus is on modern design and delivering great user experiences.
+      </p>
+    </div>
+    
+  </div>
+</section>
+
+
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-6 md:px-24 bg-gray-100">
+    <h2 class="text-4xl font-bold mb-10 text-center text-blue-600">My Projects</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition-transform duration-300">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-mobile-alt text-blue-500 text-2xl mr-3"></i>
+          <h3 class="text-2xl font-semibold">Task Manager App</h3>
+        </div>
+        <p class="text-gray-700 mb-2">A mobile app for task management using Flutter and Firebase.</p>
+        <a href="#" class="text-blue-500 hover:underline text-sm">View Details</a>
+      </div>
+      <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition-transform duration-300">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-shopping-cart text-blue-500 text-2xl mr-3"></i>
+          <h3 class="text-2xl font-semibold">E-Commerce Website</h3>
+        </div>
+        <p class="text-gray-700 mb-2">Responsive e-commerce website using Laravel and Tailwind CSS.</p>
+        <a href="#" class="text-blue-500 hover:underline text-sm">View Details</a>
+      </div>
+      <div class="bg-white shadow-lg rounded-xl p-6 hover:scale-105 transition-transform duration-300">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-chart-line text-blue-500 text-2xl mr-3"></i>
+          <h3 class="text-2xl font-semibold">Social Dashboard</h3>
+        </div>
+        <p class="text-gray-700 mb-2">Social media management dashboard using React and Node.js.</p>
+        <a href="#" class="text-blue-500 hover:underline text-sm">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-6 md:px-24 bg-gray-100">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-blue-600 mb-12">Technical Skills</h2>
+
+    <div class="space-y-8">
+      
+      <!-- Skill 1 -->
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-lg font-semibold text-gray-700">HTML & CSS</span>
+          <span class="text-sm text-gray-600">95%</span>
+        </div>
+        <div class="w-full bg-gray-300 rounded-full h-4">
+          <div class="bg-blue-600 h-4 rounded-full" style="width: 95%;"></div>
+        </div>
+      </div>
+
+      <!-- Skill 2 -->
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-lg font-semibold text-gray-700">JavaScript</span>
+          <span class="text-sm text-gray-600">85%</span>
+        </div>
+        <div class="w-full bg-gray-300 rounded-full h-4">
+          <div class="bg-blue-600 h-4 rounded-full" style="width: 85%;"></div>
+        </div>
+      </div>
+
+      <!-- Skill 3 -->
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-lg font-semibold text-gray-700">Laravel / PHP</span>
+          <span class="text-sm text-gray-600">80%</span>
+        </div>
+        <div class="w-full bg-gray-300 rounded-full h-4">
+          <div class="bg-blue-600 h-4 rounded-full" style="width: 80%;"></div>
+        </div>
+      </div>
+
+      <!-- Skill 4 -->
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="text-lg font-semibold text-gray-700">React / Python</span>
+          <span class="text-sm text-gray-600">70%</span>
+        </div>
+        <div class="w-full bg-gray-300 rounded-full h-4">
+          <div class="bg-blue-600 h-4 rounded-full" style="width: 70%;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 md:px-24 bg-white">
+  <h2 class="text-4xl font-bold mb-6 text-center text-blue-600">Contact Me</h2>
+  
+  <div class="max-w-xl mx-auto mb-10 text-center">
+    <p class="text-lg text-gray-700 mb-2">
+      <i class="fas fa-envelope text-blue-500 mr-2"></i>
+      <span>Email: <a href="mailto:johnkache72@gmail.com" class="text-blue-600 hover:underline">johnkache72@gmail.com</a></span>
+    </p>
+    <p class="text-lg text-gray-700 flex items-center justify-center gap-2">
+      <i class="fab fa-whatsapp text-green-500"></i>
+      <span>Phone:</span>
+      <a href="https://wa.me/255689178891" target="_blank" class="text-blue-600 hover:underline flex items-center gap-2">
+        
+        + (255) 689178891
+      </a>
+    </p>
+  </div>
+
+  <!-- Popup Message -->
+  <!-- <div id="popupMessage" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 hidden">
+    <div class="bg-green-100 border border-green-300 rounded-lg p-6 shadow-lg text-green-800 text-xl font-semibold flex flex-col items-center">
+      <i class="fas fa-check-circle text-4xl mb-2"></i>
+      <span id="popupText">Message sent!</span>
+      <button onclick="closePopup()" class="mt-4 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">OK</button>
+    </div>
+  </div>
+
+  <div id="formMessage" class="hidden mt-4 text-center"></div>
+  <form id="contactForm" action="http://localhost:3000/api/contact" method="POST" class="max-w-xl mx-auto space-y-6 bg-white p-8 rounded-xl shadow-lg">
+    <div>
+      <label for="name" class="block text-lg font-medium text-gray-700 mb-2">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+    </div>
+    <div>
+      <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+    </div>
+    <div>
+      <label for="message" class="block text-lg font-medium text-gray-700 mb-2">Your Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Type your message..." required
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+    </div>
+    <button type="submit"
+      class="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow">
+      <i class="fas fa-paper-plane mr-2"></i>Send Message
+    </button>
+  </form> -->
+  <script>
+function showPopup(message) {
+  document.getElementById('popupText').textContent = message;
+  document.getElementById('popupMessage').classList.remove('hidden');
+}
+function closePopup() {
+  document.getElementById('popupMessage').classList.add('hidden');
+}
+
+const formMessage = document.getElementById('formMessage');
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+  formMessage.classList.add('hidden');
+  try {
+    const res = await fetch('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      showPopup('Message sent!');
+      form.reset();
+    } else {
+      const error = await res.json();
+      formMessage.textContent = 'Failed to send message: ' + (error.error || 'Unknown error');
+      formMessage.className = 'mt-4 text-red-700 bg-red-100 border border-red-300 rounded p-3 text-center';
+      formMessage.classList.remove('hidden');
+    }
+  } catch (err) {
+    formMessage.textContent = 'Network error. Please try again.';
+    formMessage.className = 'mt-4 text-red-700 bg-red-100 border border-red-300 rounded p-3 text-center';
+    formMessage.classList.remove('hidden');
+  }
+});
+</script>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-8 mt-10">
+    <p>
+      <a href="post.php" class="text-blue-400 hover:underline">© 2025 John Kache. All rights reserved. </a>
+    </p>
+  </footer>
+
+  <style>
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</body>
+</html>

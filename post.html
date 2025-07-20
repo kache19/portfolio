@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post | John Kache Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">John Kache</h1>
+      <ul class="hidden md:flex space-x-8 text-lg">
+        <li><a href="index.php#home" class="hover:text-blue-500 transition">Home</a></li>
+        
+      </ul>
+    </div>
+  </nav>
+
+ <section id="add-project" class="py-16 px-6 md:px-24 bg-white">
+  <h2 class="text-3xl font-bold mb-8 text-center text-blue-600">Upload Project</h2>
+  <form id="projectForm" class="max-w-xl mx-auto space-y-6 bg-gray-50 p-8 rounded-xl shadow-lg">
+    <div>
+      <label for="title" class="block text-lg font-medium text-gray-700 mb-2">Project Title</label>
+      <input type="text" id="title" name="title" placeholder="Enter project title" required
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+    </div>
+    <div>
+      <label for="description" class="block text-lg font-medium text-gray-700 mb-2">Description</label>
+      <textarea id="description" name="description" rows="3" placeholder="Short description" required
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+    </div>
+    <div>
+      <label for="link" class="block text-lg font-medium text-gray-700 mb-2">Project Link</label>
+      <input type="url" id="link" name="link" placeholder="https://yourproject.com" required
+        class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+    </div>
+    <button type="submit"
+      class="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow">
+      <i class="fas fa-plus mr-2"></i>Add Project
+    </button>
+  </form>
+  <div id="projectMessage" class="hidden mt-4 text-center"></div>
+</section>
+<script>
+document.getElementById('projectForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    title: form.title.value,
+    description: form.description.value,
+    link: form.link.value
+  };
+  const projectMessage = document.getElementById('projectMessage');
+  projectMessage.classList.add('hidden');
+  try {
+    // Change the URL below to your backend endpoint for saving projects
+    const res = await fetch('http://localhost:3000/api/projects', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      projectMessage.textContent = 'Project added successfully!';
+      projectMessage.className = 'mt-4 text-green-700 bg-green-100 border border-green-300 rounded p-3 text-center';
+      projectMessage.classList.remove('hidden');
+      form.reset();
+    } else {
+      const error = await res.json();
+      projectMessage.textContent = 'Failed to add project: ' + (error.error || 'Unknown error');
+      projectMessage.className = 'mt-4 text-red-700 bg-red-100 border border-red-300 rounded p-3 text-center';
+      projectMessage.classList.remove('hidden');
+    }
+  } catch (err) {
+    projectMessage.textContent = 'Network error. Please try again.';
+    projectMessage.className = 'mt-4 text-red-700 bg-red-100 border border-red-300 rounded p-3 text-center';
+    projectMessage.classList.remove('hidden');
+  }
+});
+</script>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-8 mt-10">
+    <p>© 2025 John Kache. All rights reserved.</p>
+  </footer>
